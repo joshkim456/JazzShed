@@ -14,5 +14,6 @@ xcuserdata/
 # SoundFonts (large binary — track with Git LFS or download separately)
 *.sf2
 
-# Claude Code
+# Editor/tool config
 .claude/
+CLAUDE.md

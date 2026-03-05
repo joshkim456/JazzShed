@@ -3,7 +3,7 @@
 > *Gamifying jazz practice through real-time audio detection and vocabulary scoring*
 
 **Working Title:** JazzShed (alternatives: ChopShop, BopQuest, The Woodshed)
-**Author:** Joshua Kim
+**Author:** joshkim456
 **Date:** 2026-03-04
 **Status:** Draft v1
 
@@ -336,7 +336,7 @@ The detection system must be **generous, not punitive**. Jazz is about tension a
 **Why iOS native:**
 - **Audio latency:** AVAudioEngine provides the lowest possible audio latency on any mobile platform. For real-time pitch detection, latency matters enormously — you need < 20ms to feel responsive
 - **AudioKit:** The AudioKit library (open source, Swift-native) provides production-ready pitch detection (YIN, McLeod algorithms), audio analysis, and DSP. This is the most mature audio processing library for any mobile platform
-- **Joshua already knows Swift/SwiftUI** — no new language to learn
+- **Already familiar with Swift/SwiftUI** — no new language to learn
 - **Practice apps are mobile-first** — phone on the music stand, headphones in, backing track playing
 - **Native UI performance** — SwiftUI's animation system handles the real-time visual feedback (combo counters, note indicators, scrolling chord charts) with buttery 60fps
 - **Haptic feedback** — Taptic Engine for satisfying feedback on pattern detection (subtle pulse when you nail an enclosure)
@@ -345,7 +345,7 @@ The detection system must be **generous, not punitive**. Jazz is about tension a
 
 | Layer | Technology | Why |
 |-------|-----------|-----|
-| **UI** | SwiftUI | Declarative, modern, great for complex animated interfaces. Joshua already knows it |
+| **UI** | SwiftUI | Declarative, modern, great for complex animated interfaces |
 | **Audio Input** | AVAudioEngine | Apple's low-level audio framework. Direct mic access with minimal latency |
 | **Pitch Detection** | AudioKit / SoundpipeAudioKit | Open-source Swift framework with YIN and McLeod pitch detection built in. Battle-tested |
 | **Backing Track Playback** | AVAudioEngine | Simultaneous playback and recording through the same audio graph |

@@ -554,7 +554,7 @@ Appears after completing a solo (or tapping "End"):
 │          PROFILE                     │
 ├─────────────────────────────────────┤
 │                                     │
-│  Joshua Kim                         │
+│  Jazz Player                        │
 │  Alto Saxophone                     │
 │  Member since March 2026            │
 │                                     │
