@@ -1,0 +1,35 @@
+{
+  "id": "solar",
+  "title": "Solar",
+  "composer": "Miles Davis",
+  "originalKey": "Cm",
+  "form": "through-composed",
+  "timeSignature": [4, 4],
+  "defaultTempo": 150,
+  "difficulty": 2,
+  "sections": [
+    {
+      "label": "A",
+      "bars": [
+        { "chords": [{ "root": "C", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "C", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "G", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "C", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "F", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "F", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "F", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "Bb", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "Eb", "quality": "maj7", "beats": 4 }] },
+        { "chords": [
+          { "root": "Eb", "quality": "min7", "beats": 2 },
+          { "root": "Ab", "quality": "7", "beats": 2 }
+        ]},
+        { "chords": [{ "root": "Db", "quality": "maj7", "beats": 4 }] },
+        { "chords": [
+          { "root": "D", "quality": "min7b5", "beats": 2 },
+          { "root": "G", "quality": "7", "beats": 2 }
+        ]}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "id": "beautiful-love",
+  "title": "Beautiful Love",
+  "composer": "Victor Young / Wayne King",
+  "originalKey": "Dm",
+  "form": "AABA",
+  "timeSignature": [4, 4],
+  "defaultTempo": 160,
+  "difficulty": 3,
+  "sections": [
+    {
+      "label": "A1",
+      "bars": [
+        { "chords": [{ "root": "E", "quality": "min7b5", "beats": 4 }] },
+        { "chords": [{ "root": "A", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "D", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "D", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "G", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "C", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "F", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "F", "quality": "maj7", "beats": 4 }] }
+      ]
+    },
+    {
+      "label": "A2",
+      "bars": [
+        { "chords": [{ "root": "E", "quality": "min7b5", "beats": 4 }] },
+        { "chords": [{ "root": "A", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "D", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "D", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "G", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "C", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "F", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "F", "quality": "maj7", "beats": 4 }] }
+      ]
+    },
+    {
+      "label": "B",
+      "bars": [
+        { "chords": [{ "root": "E", "quality": "min7b5", "beats": 4 }] },
+        { "chords": [{ "root": "A", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "D", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "D", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "B", "quality": "min7b5", "beats": 4 }] },
+        { "chords": [{ "root": "E", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "E", "quality": "min7b5", "beats": 4 }] },
+        { "chords": [{ "root": "A", "quality": "7", "beats": 4 }] }
+      ]
+    },
+    {
+      "label": "A3",
+      "bars": [
+        { "chords": [{ "root": "E", "quality": "min7b5", "beats": 4 }] },
+        { "chords": [{ "root": "A", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "D", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "D", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "G", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "C", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "F", "quality": "maj7", "beats": 4 }] },
+        { "chords": [
+          { "root": "E", "quality": "min7b5", "beats": 2 },
+          { "root": "A", "quality": "7", "beats": 2 }
+        ]}
+      ]
+    }
+  ]
+}

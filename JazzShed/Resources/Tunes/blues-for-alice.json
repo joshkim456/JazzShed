@@ -1,0 +1,53 @@
+{
+  "id": "blues-for-alice",
+  "title": "Blues For Alice",
+  "composer": "Charlie Parker",
+  "originalKey": "F",
+  "form": "Blues",
+  "timeSignature": [4, 4],
+  "defaultTempo": 160,
+  "difficulty": 4,
+  "sections": [
+    {
+      "label": "A",
+      "bars": [
+        { "chords": [{ "root": "F", "quality": "maj7", "beats": 4 }] },
+        { "chords": [
+          { "root": "E", "quality": "min7b5", "beats": 2 },
+          { "root": "A", "quality": "7", "beats": 2 }
+        ]},
+        { "chords": [
+          { "root": "D", "quality": "min7", "beats": 2 },
+          { "root": "G", "quality": "7", "beats": 2 }
+        ]},
+        { "chords": [
+          { "root": "C", "quality": "min7", "beats": 2 },
+          { "root": "F", "quality": "7", "beats": 2 }
+        ]},
+        { "chords": [{ "root": "Bb", "quality": "maj7", "beats": 4 }] },
+        { "chords": [
+          { "root": "Bb", "quality": "min7", "beats": 2 },
+          { "root": "Eb", "quality": "7", "beats": 2 }
+        ]},
+        { "chords": [
+          { "root": "A", "quality": "min7", "beats": 2 },
+          { "root": "D", "quality": "7", "beats": 2 }
+        ]},
+        { "chords": [
+          { "root": "Ab", "quality": "min7", "beats": 2 },
+          { "root": "Db", "quality": "7", "beats": 2 }
+        ]},
+        { "chords": [{ "root": "G", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "C", "quality": "7", "beats": 4 }] },
+        { "chords": [
+          { "root": "F", "quality": "maj7", "beats": 2 },
+          { "root": "D", "quality": "7", "beats": 2 }
+        ]},
+        { "chords": [
+          { "root": "G", "quality": "min7", "beats": 2 },
+          { "root": "C", "quality": "7", "beats": 2 }
+        ]}
+      ]
+    }
+  ]
+}

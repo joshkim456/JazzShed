@@ -1,0 +1,70 @@
+{
+  "id": "autumn-leaves",
+  "title": "Autumn Leaves",
+  "composer": "Joseph Kosma",
+  "originalKey": "Gm",
+  "form": "AABA",
+  "timeSignature": [4, 4],
+  "defaultTempo": 140,
+  "difficulty": 2,
+  "sections": [
+    {
+      "label": "A1",
+      "bars": [
+        { "chords": [{ "root": "C", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "F", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "Bb", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "Eb", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "A", "quality": "min7b5", "beats": 4 }] },
+        { "chords": [{ "root": "D", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "G", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "G", "quality": "min7", "beats": 4 }] }
+      ]
+    },
+    {
+      "label": "A2",
+      "bars": [
+        { "chords": [{ "root": "C", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "F", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "Bb", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "Eb", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "A", "quality": "min7b5", "beats": 4 }] },
+        { "chords": [{ "root": "D", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "G", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "G", "quality": "min7", "beats": 4 }] }
+      ]
+    },
+    {
+      "label": "B",
+      "bars": [
+        { "chords": [{ "root": "A", "quality": "min7b5", "beats": 4 }] },
+        { "chords": [{ "root": "D", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "G", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "G", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "C", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "F", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "Bb", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "Bb", "quality": "maj7", "beats": 4 }] }
+      ]
+    },
+    {
+      "label": "A3",
+      "bars": [
+        { "chords": [{ "root": "A", "quality": "min7b5", "beats": 4 }] },
+        { "chords": [{ "root": "D", "quality": "7", "beats": 4 }] },
+        { "chords": [
+          { "root": "G", "quality": "min7", "beats": 2 },
+          { "root": "C", "quality": "7", "beats": 2 }
+        ]},
+        { "chords": [
+          { "root": "F", "quality": "min7", "beats": 2 },
+          { "root": "Bb", "quality": "7", "beats": 2 }
+        ]},
+        { "chords": [{ "root": "Eb", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "A", "quality": "min7b5", "beats": 4 }] },
+        { "chords": [{ "root": "D", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "G", "quality": "min7", "beats": 4 }] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "id": "all-the-things",
+  "title": "All The Things You Are",
+  "composer": "Jerome Kern",
+  "originalKey": "Ab",
+  "form": "AABA",
+  "timeSignature": [4, 4],
+  "defaultTempo": 140,
+  "difficulty": 3,
+  "sections": [
+    {
+      "label": "A1",
+      "bars": [
+        { "chords": [{ "root": "F", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "Bb", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "Eb", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "Ab", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "Db", "quality": "maj7", "beats": 4 }] },
+        { "chords": [
+          { "root": "D", "quality": "min7b5", "beats": 2 },
+          { "root": "G", "quality": "7", "beats": 2 }
+        ]},
+        { "chords": [{ "root": "C", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "C", "quality": "maj7", "beats": 4 }] }
+      ]
+    },
+    {
+      "label": "A2",
+      "bars": [
+        { "chords": [{ "root": "C", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "F", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "Bb", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "Eb", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "Ab", "quality": "maj7", "beats": 4 }] },
+        { "chords": [
+          { "root": "A", "quality": "min7b5", "beats": 2 },
+          { "root": "D", "quality": "7", "beats": 2 }
+        ]},
+        { "chords": [{ "root": "G", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "G", "quality": "maj7", "beats": 4 }] }
+      ]
+    },
+    {
+      "label": "B",
+      "bars": [
+        { "chords": [{ "root": "A", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "D", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "G", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "G", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "F#", "quality": "min7b5", "beats": 4 }] },
+        { "chords": [{ "root": "B", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "E", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "C", "quality": "7alt", "beats": 4 }] }
+      ]
+    },
+    {
+      "label": "A3",
+      "bars": [
+        { "chords": [{ "root": "F", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "Bb", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "Eb", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "Ab", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "Db", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "Db", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "C", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "B", "quality": "dim7", "beats": 4 }] },
+        { "chords": [{ "root": "Bb", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "Eb", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "Ab", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "G", "quality": "7", "beats": 4 }] }
+      ]
+    }
+  ]
+}

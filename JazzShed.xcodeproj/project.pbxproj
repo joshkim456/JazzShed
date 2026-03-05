@@ -1,0 +1,880 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 63;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		03A795EB10160FA7C8283B06 /* SkillTreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C375F157C3BAC5D636E2429 /* SkillTreeView.swift */; };
+		062FC47EE87F05F771287C3B /* SessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AEF52B937F9CDDF0D76DD8 /* SessionViewModel.swift */; };
+		082A32EB156DC07CB7E87621 /* JazzShedApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6C090AB4C0DCDF36783104 /* JazzShedApp.swift */; };
+		0962D42DC7CA1F5F4AF17326 /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3340B66A26740456ECB077DA /* Chord.swift */; };
+		0A2CF95093137F307C09BB19 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9AAF025AC7E1C9CF4094C8 /* ResultsView.swift */; };
+		0BDE67B38677D43C7F3951E0 /* TuneSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C454FBF0B2001761431F3743 /* TuneSelectionViewModel.swift */; };
+		10CEB75427B9859D6EAED5C5 /* all-of-me.json in Resources */ = {isa = PBXBuildFile; fileRef = C26E4C3779EF2558C39D7FD7 /* all-of-me.json */; };
+		17C2100BD2198B48F968A6B7 /* ProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB9B5DA1E79C3FDE16AC9FD /* ProgressRing.swift */; };
+		219ABD709864F9CC878CC059 /* blues-for-alice.json in Resources */ = {isa = PBXBuildFile; fileRef = 60A596DDF077D105C1635202 /* blues-for-alice.json */; };
+		2B5516CD72858B55778FC148 /* PatternDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CC15F91F10262D57602D11 /* PatternDetection.swift */; };
+		312149A2ECB74CE5CE53D9EA /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00D42B8065A4E96648E9BEC /* Colors.swift */; };
+		35D75B1FD918A75BD442E1A7 /* StylePatterns.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884A0AF6CE7458FB760D5B3 /* StylePatterns.swift */; };
+		4150030574DA8E3ADEF89943 /* OnboardingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B75DB88FDD68ECEB46C0DC /* OnboardingFlow.swift */; };
+		42255A30F5E1F298A5BBF6E7 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BAACD5BB897845C22F4ACC /* StatsView.swift */; };
+		4693C0345F23DE84D406328D /* ActiveSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D92918CD06EAB7B2BFA52CA /* ActiveSessionView.swift */; };
+		4BECEEC7A9473D7DAA5A66F1 /* donna-lee.json in Resources */ = {isa = PBXBuildFile; fileRef = 97478252C3BB4FE995E00B8D /* donna-lee.json */; };
+		4D53ABB1847194AB583DC205 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1052D6E41899BE578A0333 /* OnboardingViewModel.swift */; };
+		538DCB2733A4D015570E5C46 /* ResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E5825FE60915FE91C8A156 /* ResultsViewModel.swift */; };
+		5464E81A3E359A98154539D0 /* PatternMatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAE4AEB890E26EFF607A024 /* PatternMatcher.swift */; };
+		5A2C0C0DCF14334031656E04 /* SkillTreeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B473E5E45ED54535BB17F77 /* SkillTreeData.swift */; };
+		5EE1358DE8E1D1666CE21174 /* Difficulty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EC7890B4B346BF2FBF5598 /* Difficulty.swift */; };
+		6182EE9AEB9A9BD3A2335BCE /* fly-me-to-the-moon.json in Resources */ = {isa = PBXBuildFile; fileRef = 162250DD5A6CB48173544228 /* fly-me-to-the-moon.json */; };
+		660E342A2A4BE5560E3E2A6F /* blue-bossa.json in Resources */ = {isa = PBXBuildFile; fileRef = 5DAAC57AC51795909830BBB6 /* blue-bossa.json */; };
+		67199449C6E6A5DA578231C8 /* beautiful-love.json in Resources */ = {isa = PBXBuildFile; fileRef = 0AE2B202A437E3629B08CC98 /* beautiful-love.json */; };
+		72514777E4769CDFE7244E85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73BF6C331DD1670A116CADE2 /* Assets.xcassets */; };
+		77921C7A801D7E42E8A2B02B /* autumn-leaves.json in Resources */ = {isa = PBXBuildFile; fileRef = A14BF2D8EEA524E720AA2FEC /* autumn-leaves.json */; };
+		79FA99FBBD089D4F86EEC720 /* GeneralUser_GS.sf2 in Resources */ = {isa = PBXBuildFile; fileRef = 101E75912F1950297963482E /* GeneralUser_GS.sf2 */; };
+		7BF6AF55E045046922273812 /* PitchDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1DFFB608E1D5F9784B7FAAD /* PitchDetector.swift */; };
+		7ED6398B33C721457E31986E /* DebugSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CABB378C4760DA71D75E34 /* DebugSessionView.swift */; };
+		7EE737FB3198FDAA1D03A7BE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599F37A54F16A2299ABDD20B /* User.swift */; };
+		8333811C8BA7BF7AD9E13963 /* NoteEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9C221293120A1EB445D629 /* NoteEvent.swift */; };
+		85564430D4DE542C83F906F9 /* confirmation.json in Resources */ = {isa = PBXBuildFile; fileRef = 00FD2DB4176BC308E4A19BE8 /* confirmation.json */; };
+		8F7FD6C1FD6CB10A5045319C /* NoteSegmenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785DB18CA510F02FD3D99B00 /* NoteSegmenterTests.swift */; };
+		913C2F5E753AE991C9BC03C6 /* TuneLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE06B653AA14002046496EE /* TuneLibrary.swift */; };
+		916539A7DAF130A3884128B0 /* VocabularyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E86037883AB9026E9BA49D07 /* VocabularyItem.swift */; };
+		94E5DA47A503D02C5E66E0D4 /* NoteSegmenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F8D1F9D0CCA0D840A5D914 /* NoteSegmenter.swift */; };
+		960B83831E15BA5240E75330 /* JazzButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DA0F4432FA8B5FA2792767 /* JazzButton.swift */; };
+		9AF4B54DBA47044A57E08D80 /* MIDIHelpersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B1417DD70897E41BB5885C /* MIDIHelpersTests.swift */; };
+		9F16D65EB944507047DB4072 /* Tune.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C730ED4C186CD8CD724EA6 /* Tune.swift */; };
+		A3EF10117FDEB9A377499265 /* StreakManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A18952E5F54450375AE1AE6 /* StreakManager.swift */; };
+		A4959936EA1DB5744A03F7F5 /* ScoreEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1D3FDC1926A40C26A74EE7 /* ScoreEngine.swift */; };
+		A846A4D5FBEFD1CAA61BE44C /* ChordChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AB25817BAD6722ACC5155A /* ChordChartView.swift */; };
+		A8555610978A5BFFD7468212 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F73640339669C8CCC09FA51C /* HomeViewModel.swift */; };
+		B20D44421EF3AD82D7A8FD0C /* ChordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F497003CF2FC43561C3CE57 /* ChordTests.swift */; };
+		B29094E1943ECC8CF16412B1 /* SkillNodeProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4489EA1765AF753B1440BE8E /* SkillNodeProgress.swift */; };
+		B824002F77AA0843A2C996A2 /* Spacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE28B705C4F96F6F385155D /* Spacing.swift */; };
+		BAECB86C17C42FA4E9169DF6 /* MIDIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1A804FA5E366B3DE93441C /* MIDIHelpers.swift */; };
+		BB594AFA79C89177A08AB7C6 /* LickPracticeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B22676D8FAA52187D10AD6 /* LickPracticeView.swift */; };
+		BD60D3FE2CEB6A2016DDC14A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764A3C1381136A53F337064C /* HomeView.swift */; };
+		BF85D206BA15390C0E6B0FF7 /* ContextEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56DAAC60AB67FF3BA373B3B /* ContextEngine.swift */; };
+		C0514611C94CD4B3A0A3E9BE /* TuneSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDEB1013C834AFC9D00B6D2 /* TuneSelectionView.swift */; };
+		C488C67CE20078F237D6110C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FAA596D3041ED1FD6C58FA /* ContentView.swift */; };
+		CFCFE391721CF98AB39F94A3 /* solar.json in Resources */ = {isa = PBXBuildFile; fileRef = 9F06716FD4C0FBD948D4B435 /* solar.json */; };
+		D3F38292D5DEE9B57DAD4FB6 /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C560D3AFA58FEB7F5C5CCFF0 /* Color+Hex.swift */; };
+		D71C523507372214642C8A17 /* StatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9E6714FF847D0F117B14FE /* StatsViewModel.swift */; };
+		D8A8709D3EFDEEE97915267D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30188CFB13F9939C90872FC0 /* ProfileView.swift */; };
+		D998BB608DC5EE4A95D5DA98 /* MixerPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F97596ED9E2CB50CE3719EB /* MixerPanelView.swift */; };
+		DA53C4E8B682FE3CDE04790F /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C3094EEFDCEFD48E868323 /* Typography.swift */; };
+		DF0FBD217678A8FB1396F728 /* Pattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4780AB28DE685E915E450AC4 /* Pattern.swift */; };
+		DF759A0873A2D2CD3C240BAB /* SkillTreeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0438F9F006A8E6F4C08D20E /* SkillTreeViewModel.swift */; };
+		E12F0C314C9CB33B3C6F4D76 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0CAED5EE18A7DCF7819728 /* Achievement.swift */; };
+		E5DB17D092FE8D1906D063D4 /* all-the-things.json in Resources */ = {isa = PBXBuildFile; fileRef = 50FB92360EC7F6A9E6364B60 /* all-the-things.json */; };
+		E915E8DE56236E55266C103D /* AdditionalPatternDetectors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9903B131FA61566303F39B4 /* AdditionalPatternDetectors.swift */; };
+		EAC94CC2F1E9E54C77961A50 /* ChordQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7225BABDC28E3537FD47DFF0 /* ChordQuality.swift */; };
+		ED25D33D8A17BC1D95829E63 /* MIDISequencer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320A6601F391FD4111D1BC57 /* MIDISequencer.swift */; };
+		ED786F786B99422869F79AAB /* BackingTrackPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10556FDBD7284F9226D6C5EC /* BackingTrackPlayer.swift */; };
+		F0265BBBAEB4A3F686E0B52E /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5DEC38F00DA61ED339CB5A /* Session.swift */; };
+		F02C029CCA05EA22707056BF /* Instrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AB06BEA7C11C26589D12ED /* Instrument.swift */; };
+		FAA39C436679A957E5634547 /* AudioEngineService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0524CED20143E7433D22B39E /* AudioEngineService.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AC2D68D43B62AECEFADD4004 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F41FA5132AF346259333BA0F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A8771784E8F491A62FF40492;
+			remoteInfo = JazzShed;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		00AEF52B937F9CDDF0D76DD8 /* SessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionViewModel.swift; sourceTree = "<group>"; };
+		00FD2DB4176BC308E4A19BE8 /* confirmation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = confirmation.json; sourceTree = "<group>"; };
+		0524CED20143E7433D22B39E /* AudioEngineService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioEngineService.swift; sourceTree = "<group>"; };
+		0AE2B202A437E3629B08CC98 /* beautiful-love.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "beautiful-love.json"; sourceTree = "<group>"; };
+		0B473E5E45ED54535BB17F77 /* SkillTreeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillTreeData.swift; sourceTree = "<group>"; };
+		101E75912F1950297963482E /* GeneralUser_GS.sf2 */ = {isa = PBXFileReference; lastKnownFileType = file; path = GeneralUser_GS.sf2; sourceTree = "<group>"; };
+		10556FDBD7284F9226D6C5EC /* BackingTrackPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackingTrackPlayer.swift; sourceTree = "<group>"; };
+		15CABB378C4760DA71D75E34 /* DebugSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSessionView.swift; sourceTree = "<group>"; };
+		162250DD5A6CB48173544228 /* fly-me-to-the-moon.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "fly-me-to-the-moon.json"; sourceTree = "<group>"; };
+		16AB25817BAD6722ACC5155A /* ChordChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordChartView.swift; sourceTree = "<group>"; };
+		1BE28B705C4F96F6F385155D /* Spacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spacing.swift; sourceTree = "<group>"; };
+		2B9C221293120A1EB445D629 /* NoteEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEvent.swift; sourceTree = "<group>"; };
+		30188CFB13F9939C90872FC0 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		320A6601F391FD4111D1BC57 /* MIDISequencer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDISequencer.swift; sourceTree = "<group>"; };
+		3340B66A26740456ECB077DA /* Chord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chord.swift; sourceTree = "<group>"; };
+		37CC15F91F10262D57602D11 /* PatternDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternDetection.swift; sourceTree = "<group>"; };
+		3A1D3FDC1926A40C26A74EE7 /* ScoreEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreEngine.swift; sourceTree = "<group>"; };
+		4489EA1765AF753B1440BE8E /* SkillNodeProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillNodeProgress.swift; sourceTree = "<group>"; };
+		45B1417DD70897E41BB5885C /* MIDIHelpersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDIHelpersTests.swift; sourceTree = "<group>"; };
+		4780AB28DE685E915E450AC4 /* Pattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pattern.swift; sourceTree = "<group>"; };
+		4F497003CF2FC43561C3CE57 /* ChordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordTests.swift; sourceTree = "<group>"; };
+		50FB92360EC7F6A9E6364B60 /* all-the-things.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "all-the-things.json"; sourceTree = "<group>"; };
+		599F37A54F16A2299ABDD20B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5A18952E5F54450375AE1AE6 /* StreakManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakManager.swift; sourceTree = "<group>"; };
+		5DAAC57AC51795909830BBB6 /* blue-bossa.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "blue-bossa.json"; sourceTree = "<group>"; };
+		60A596DDF077D105C1635202 /* blues-for-alice.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "blues-for-alice.json"; sourceTree = "<group>"; };
+		6A9E6714FF847D0F117B14FE /* StatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewModel.swift; sourceTree = "<group>"; };
+		6D802A87A8AEA6304D131A10 /* JazzShedTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = JazzShedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7225BABDC28E3537FD47DFF0 /* ChordQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordQuality.swift; sourceTree = "<group>"; };
+		73BF6C331DD1670A116CADE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		75EC7890B4B346BF2FBF5598 /* Difficulty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Difficulty.swift; sourceTree = "<group>"; };
+		764A3C1381136A53F337064C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		785DB18CA510F02FD3D99B00 /* NoteSegmenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteSegmenterTests.swift; sourceTree = "<group>"; };
+		79AB06BEA7C11C26589D12ED /* Instrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instrument.swift; sourceTree = "<group>"; };
+		7D92918CD06EAB7B2BFA52CA /* ActiveSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveSessionView.swift; sourceTree = "<group>"; };
+		7F97596ED9E2CB50CE3719EB /* MixerPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixerPanelView.swift; sourceTree = "<group>"; };
+		80E5825FE60915FE91C8A156 /* ResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewModel.swift; sourceTree = "<group>"; };
+		82BAACD5BB897845C22F4ACC /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		89F8D1F9D0CCA0D840A5D914 /* NoteSegmenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteSegmenter.swift; sourceTree = "<group>"; };
+		8AAE4AEB890E26EFF607A024 /* PatternMatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternMatcher.swift; sourceTree = "<group>"; };
+		8C1052D6E41899BE578A0333 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		8C375F157C3BAC5D636E2429 /* SkillTreeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillTreeView.swift; sourceTree = "<group>"; };
+		8E0CAED5EE18A7DCF7819728 /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
+		97478252C3BB4FE995E00B8D /* donna-lee.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "donna-lee.json"; sourceTree = "<group>"; };
+		9F06716FD4C0FBD948D4B435 /* solar.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = solar.json; sourceTree = "<group>"; };
+		A00D42B8065A4E96648E9BEC /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		A14BF2D8EEA524E720AA2FEC /* autumn-leaves.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "autumn-leaves.json"; sourceTree = "<group>"; };
+		A9903B131FA61566303F39B4 /* AdditionalPatternDetectors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalPatternDetectors.swift; sourceTree = "<group>"; };
+		A9C730ED4C186CD8CD724EA6 /* Tune.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tune.swift; sourceTree = "<group>"; };
+		B2C3094EEFDCEFD48E868323 /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
+		B5DA0F4432FA8B5FA2792767 /* JazzButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JazzButton.swift; sourceTree = "<group>"; };
+		BB6C090AB4C0DCDF36783104 /* JazzShedApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JazzShedApp.swift; sourceTree = "<group>"; };
+		BE5DEC38F00DA61ED339CB5A /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		C26E4C3779EF2558C39D7FD7 /* all-of-me.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "all-of-me.json"; sourceTree = "<group>"; };
+		C454FBF0B2001761431F3743 /* TuneSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuneSelectionViewModel.swift; sourceTree = "<group>"; };
+		C4FAA596D3041ED1FD6C58FA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C560D3AFA58FEB7F5C5CCFF0 /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
+		CAB9B5DA1E79C3FDE16AC9FD /* ProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRing.swift; sourceTree = "<group>"; };
+		CB9AAF025AC7E1C9CF4094C8 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
+		CEE06B653AA14002046496EE /* TuneLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuneLibrary.swift; sourceTree = "<group>"; };
+		D1DFFB608E1D5F9784B7FAAD /* PitchDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchDetector.swift; sourceTree = "<group>"; };
+		D2B75DB88FDD68ECEB46C0DC /* OnboardingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlow.swift; sourceTree = "<group>"; };
+		DA1A804FA5E366B3DE93441C /* MIDIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDIHelpers.swift; sourceTree = "<group>"; };
+		DEDEB1013C834AFC9D00B6D2 /* TuneSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TuneSelectionView.swift; sourceTree = "<group>"; };
+		E0438F9F006A8E6F4C08D20E /* SkillTreeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillTreeViewModel.swift; sourceTree = "<group>"; };
+		E5B22676D8FAA52187D10AD6 /* LickPracticeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LickPracticeView.swift; sourceTree = "<group>"; };
+		E86037883AB9026E9BA49D07 /* VocabularyItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyItem.swift; sourceTree = "<group>"; };
+		EA30A6C6E7BFE080649C8A8D /* JazzShed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JazzShed.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F56DAAC60AB67FF3BA373B3B /* ContextEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextEngine.swift; sourceTree = "<group>"; };
+		F73640339669C8CCC09FA51C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		F884A0AF6CE7458FB760D5B3 /* StylePatterns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylePatterns.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		05C65B3FDED48F9CE77E52B9 /* Gamification */ = {
+			isa = PBXGroup;
+			children = (
+				5A18952E5F54450375AE1AE6 /* StreakManager.swift */,
+			);
+			path = Gamification;
+			sourceTree = "<group>";
+		};
+		0989B49AEA24CF4EF6A30853 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B5DA0F4432FA8B5FA2792767 /* JazzButton.swift */,
+				7F97596ED9E2CB50CE3719EB /* MixerPanelView.swift */,
+				CAB9B5DA1E79C3FDE16AC9FD /* ProgressRing.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		1A5576A764568B926AE83BB0 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F73640339669C8CCC09FA51C /* HomeViewModel.swift */,
+				8C1052D6E41899BE578A0333 /* OnboardingViewModel.swift */,
+				80E5825FE60915FE91C8A156 /* ResultsViewModel.swift */,
+				00AEF52B937F9CDDF0D76DD8 /* SessionViewModel.swift */,
+				E0438F9F006A8E6F4C08D20E /* SkillTreeViewModel.swift */,
+				6A9E6714FF847D0F117B14FE /* StatsViewModel.swift */,
+				C454FBF0B2001761431F3743 /* TuneSelectionViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		1E82E73CDED513869C4679EF /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C4FAA596D3041ED1FD6C58FA /* ContentView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		24625A80919B1AB8A5C9C10B /* Play */ = {
+			isa = PBXGroup;
+			children = (
+				7D92918CD06EAB7B2BFA52CA /* ActiveSessionView.swift */,
+				16AB25817BAD6722ACC5155A /* ChordChartView.swift */,
+				15CABB378C4760DA71D75E34 /* DebugSessionView.swift */,
+				DEDEB1013C834AFC9D00B6D2 /* TuneSelectionView.swift */,
+			);
+			path = Play;
+			sourceTree = "<group>";
+		};
+		291E8D620C3285CAECC49386 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				764A3C1381136A53F337064C /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		39DAFCA3526D3E6B17B67F2A /* Patterns */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Patterns;
+			sourceTree = "<group>";
+		};
+		3DB9499675B501A9AAD1566D /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				82BAACD5BB897845C22F4ACC /* StatsView.swift */,
+			);
+			path = Stats;
+			sourceTree = "<group>";
+		};
+		535EF2838C5DB7C5692ACD24 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				0524CED20143E7433D22B39E /* AudioEngineService.swift */,
+				10556FDBD7284F9226D6C5EC /* BackingTrackPlayer.swift */,
+				320A6601F391FD4111D1BC57 /* MIDISequencer.swift */,
+				89F8D1F9D0CCA0D840A5D914 /* NoteSegmenter.swift */,
+				D1DFFB608E1D5F9784B7FAAD /* PitchDetector.swift */,
+				F884A0AF6CE7458FB760D5B3 /* StylePatterns.swift */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		5851FE756D7BBBF2CFBF44A8 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				7225BABDC28E3537FD47DFF0 /* ChordQuality.swift */,
+				75EC7890B4B346BF2FBF5598 /* Difficulty.swift */,
+				79AB06BEA7C11C26589D12ED /* Instrument.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		5EA7E3F3652628C99896734F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C560D3AFA58FEB7F5C5CCFF0 /* Color+Hex.swift */,
+				DA1A804FA5E366B3DE93441C /* MIDIHelpers.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		69B1981BEE3E0898230E262B /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				30188CFB13F9939C90872FC0 /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		6C01DD2D3F88292E97AF45EB /* JazzShed */ = {
+			isa = PBXGroup;
+			children = (
+				E01925A209410D6A10C16D19 /* App */,
+				5EA7E3F3652628C99896734F /* Extensions */,
+				9012F5A85A12BCBAF294B449 /* Models */,
+				A74491980B6838A297F2891C /* Resources */,
+				DB28469A41865884507A6A54 /* Services */,
+				CF8D353EAD368C689E7B2C17 /* Theme */,
+				1A5576A764568B926AE83BB0 /* ViewModels */,
+				E622E3CCF6969AB3D0F0E3F5 /* Views */,
+			);
+			path = JazzShed;
+			sourceTree = "<group>";
+		};
+		6C4465158997247E0648E30C /* Results */ = {
+			isa = PBXGroup;
+			children = (
+				CB9AAF025AC7E1C9CF4094C8 /* ResultsView.swift */,
+			);
+			path = Results;
+			sourceTree = "<group>";
+		};
+		6CAD0C20DB7978E9617CC6C4 = {
+			isa = PBXGroup;
+			children = (
+				6C01DD2D3F88292E97AF45EB /* JazzShed */,
+				953DD6FDD2430D9EF6048671 /* JazzShedTests */,
+				E21AB4F7D95E0923864C00EA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8B196868FE726BC91BDF89B7 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				D2B75DB88FDD68ECEB46C0DC /* OnboardingFlow.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		8B5986038960E06BFCA74BF3 /* Learn */ = {
+			isa = PBXGroup;
+			children = (
+				E5B22676D8FAA52187D10AD6 /* LickPracticeView.swift */,
+				8C375F157C3BAC5D636E2429 /* SkillTreeView.swift */,
+			);
+			path = Learn;
+			sourceTree = "<group>";
+		};
+		9012F5A85A12BCBAF294B449 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8E0CAED5EE18A7DCF7819728 /* Achievement.swift */,
+				3340B66A26740456ECB077DA /* Chord.swift */,
+				2B9C221293120A1EB445D629 /* NoteEvent.swift */,
+				4780AB28DE685E915E450AC4 /* Pattern.swift */,
+				37CC15F91F10262D57602D11 /* PatternDetection.swift */,
+				BE5DEC38F00DA61ED339CB5A /* Session.swift */,
+				4489EA1765AF753B1440BE8E /* SkillNodeProgress.swift */,
+				A9C730ED4C186CD8CD724EA6 /* Tune.swift */,
+				599F37A54F16A2299ABDD20B /* User.swift */,
+				E86037883AB9026E9BA49D07 /* VocabularyItem.swift */,
+				5851FE756D7BBBF2CFBF44A8 /* Enums */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		953DD6FDD2430D9EF6048671 /* JazzShedTests */ = {
+			isa = PBXGroup;
+			children = (
+				4F497003CF2FC43561C3CE57 /* ChordTests.swift */,
+				45B1417DD70897E41BB5885C /* MIDIHelpersTests.swift */,
+				785DB18CA510F02FD3D99B00 /* NoteSegmenterTests.swift */,
+			);
+			path = JazzShedTests;
+			sourceTree = "<group>";
+		};
+		9D05EC4C9A6555387AE6E971 /* SoundFonts */ = {
+			isa = PBXGroup;
+			children = (
+				101E75912F1950297963482E /* GeneralUser_GS.sf2 */,
+			);
+			path = SoundFonts;
+			sourceTree = "<group>";
+		};
+		A74491980B6838A297F2891C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				73BF6C331DD1670A116CADE2 /* Assets.xcassets */,
+				39DAFCA3526D3E6B17B67F2A /* Patterns */,
+				9D05EC4C9A6555387AE6E971 /* SoundFonts */,
+				BD312DF4F22BE0F95932BCE7 /* Tunes */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BD312DF4F22BE0F95932BCE7 /* Tunes */ = {
+			isa = PBXGroup;
+			children = (
+				C26E4C3779EF2558C39D7FD7 /* all-of-me.json */,
+				50FB92360EC7F6A9E6364B60 /* all-the-things.json */,
+				A14BF2D8EEA524E720AA2FEC /* autumn-leaves.json */,
+				0AE2B202A437E3629B08CC98 /* beautiful-love.json */,
+				5DAAC57AC51795909830BBB6 /* blue-bossa.json */,
+				60A596DDF077D105C1635202 /* blues-for-alice.json */,
+				00FD2DB4176BC308E4A19BE8 /* confirmation.json */,
+				97478252C3BB4FE995E00B8D /* donna-lee.json */,
+				162250DD5A6CB48173544228 /* fly-me-to-the-moon.json */,
+				9F06716FD4C0FBD948D4B435 /* solar.json */,
+			);
+			path = Tunes;
+			sourceTree = "<group>";
+		};
+		CF8D353EAD368C689E7B2C17 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				A00D42B8065A4E96648E9BEC /* Colors.swift */,
+				1BE28B705C4F96F6F385155D /* Spacing.swift */,
+				B2C3094EEFDCEFD48E868323 /* Typography.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		DB28469A41865884507A6A54 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F88F024FBF64E2DD74F10946 /* Analysis */,
+				535EF2838C5DB7C5692ACD24 /* Audio */,
+				E75CE0B76635666CF8F575AE /* Data */,
+				05C65B3FDED48F9CE77E52B9 /* Gamification */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E01925A209410D6A10C16D19 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				BB6C090AB4C0DCDF36783104 /* JazzShedApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		E21AB4F7D95E0923864C00EA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EA30A6C6E7BFE080649C8A8D /* JazzShed.app */,
+				6D802A87A8AEA6304D131A10 /* JazzShedTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E622E3CCF6969AB3D0F0E3F5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1E82E73CDED513869C4679EF /* App */,
+				0989B49AEA24CF4EF6A30853 /* Components */,
+				291E8D620C3285CAECC49386 /* Home */,
+				8B5986038960E06BFCA74BF3 /* Learn */,
+				8B196868FE726BC91BDF89B7 /* Onboarding */,
+				24625A80919B1AB8A5C9C10B /* Play */,
+				69B1981BEE3E0898230E262B /* Profile */,
+				6C4465158997247E0648E30C /* Results */,
+				3DB9499675B501A9AAD1566D /* Stats */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E75CE0B76635666CF8F575AE /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				0B473E5E45ED54535BB17F77 /* SkillTreeData.swift */,
+				CEE06B653AA14002046496EE /* TuneLibrary.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		F88F024FBF64E2DD74F10946 /* Analysis */ = {
+			isa = PBXGroup;
+			children = (
+				A9903B131FA61566303F39B4 /* AdditionalPatternDetectors.swift */,
+				F56DAAC60AB67FF3BA373B3B /* ContextEngine.swift */,
+				8AAE4AEB890E26EFF607A024 /* PatternMatcher.swift */,
+				3A1D3FDC1926A40C26A74EE7 /* ScoreEngine.swift */,
+			);
+			path = Analysis;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		847F1B42F4310A34E8FA9080 /* JazzShedTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D7AE2CDE36CA1D2BDF3D83BA /* Build configuration list for PBXNativeTarget "JazzShedTests" */;
+			buildPhases = (
+				DE4304141928EFCE111F484F /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C03C50625019049554DD6FB8 /* PBXTargetDependency */,
+			);
+			name = JazzShedTests;
+			packageProductDependencies = (
+			);
+			productName = JazzShedTests;
+			productReference = 6D802A87A8AEA6304D131A10 /* JazzShedTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A8771784E8F491A62FF40492 /* JazzShed */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F40BC21D16DE9786BF80877C /* Build configuration list for PBXNativeTarget "JazzShed" */;
+			buildPhases = (
+				13ACA46DB302D0A89C78DE25 /* Sources */,
+				2DF2509156D986FE198179AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JazzShed;
+			packageProductDependencies = (
+			);
+			productName = JazzShed;
+			productReference = EA30A6C6E7BFE080649C8A8D /* JazzShed.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F41FA5132AF346259333BA0F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					847F1B42F4310A34E8FA9080 = {
+						DevelopmentTeam = "";
+					};
+				};
+			};
+			buildConfigurationList = A823E6266260D10D095A507E /* Build configuration list for PBXProject "JazzShed" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 6CAD0C20DB7978E9617CC6C4;
+			minimizedProjectReferenceProxies = 1;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A8771784E8F491A62FF40492 /* JazzShed */,
+				847F1B42F4310A34E8FA9080 /* JazzShedTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2DF2509156D986FE198179AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72514777E4769CDFE7244E85 /* Assets.xcassets in Resources */,
+				79FA99FBBD089D4F86EEC720 /* GeneralUser_GS.sf2 in Resources */,
+				10CEB75427B9859D6EAED5C5 /* all-of-me.json in Resources */,
+				E5DB17D092FE8D1906D063D4 /* all-the-things.json in Resources */,
+				77921C7A801D7E42E8A2B02B /* autumn-leaves.json in Resources */,
+				67199449C6E6A5DA578231C8 /* beautiful-love.json in Resources */,
+				660E342A2A4BE5560E3E2A6F /* blue-bossa.json in Resources */,
+				219ABD709864F9CC878CC059 /* blues-for-alice.json in Resources */,
+				85564430D4DE542C83F906F9 /* confirmation.json in Resources */,
+				4BECEEC7A9473D7DAA5A66F1 /* donna-lee.json in Resources */,
+				6182EE9AEB9A9BD3A2335BCE /* fly-me-to-the-moon.json in Resources */,
+				CFCFE391721CF98AB39F94A3 /* solar.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		13ACA46DB302D0A89C78DE25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E12F0C314C9CB33B3C6F4D76 /* Achievement.swift in Sources */,
+				4693C0345F23DE84D406328D /* ActiveSessionView.swift in Sources */,
+				E915E8DE56236E55266C103D /* AdditionalPatternDetectors.swift in Sources */,
+				FAA39C436679A957E5634547 /* AudioEngineService.swift in Sources */,
+				ED786F786B99422869F79AAB /* BackingTrackPlayer.swift in Sources */,
+				0962D42DC7CA1F5F4AF17326 /* Chord.swift in Sources */,
+				A846A4D5FBEFD1CAA61BE44C /* ChordChartView.swift in Sources */,
+				EAC94CC2F1E9E54C77961A50 /* ChordQuality.swift in Sources */,
+				D3F38292D5DEE9B57DAD4FB6 /* Color+Hex.swift in Sources */,
+				312149A2ECB74CE5CE53D9EA /* Colors.swift in Sources */,
+				C488C67CE20078F237D6110C /* ContentView.swift in Sources */,
+				BF85D206BA15390C0E6B0FF7 /* ContextEngine.swift in Sources */,
+				7ED6398B33C721457E31986E /* DebugSessionView.swift in Sources */,
+				5EE1358DE8E1D1666CE21174 /* Difficulty.swift in Sources */,
+				BD60D3FE2CEB6A2016DDC14A /* HomeView.swift in Sources */,
+				A8555610978A5BFFD7468212 /* HomeViewModel.swift in Sources */,
+				F02C029CCA05EA22707056BF /* Instrument.swift in Sources */,
+				960B83831E15BA5240E75330 /* JazzButton.swift in Sources */,
+				082A32EB156DC07CB7E87621 /* JazzShedApp.swift in Sources */,
+				BB594AFA79C89177A08AB7C6 /* LickPracticeView.swift in Sources */,
+				BAECB86C17C42FA4E9169DF6 /* MIDIHelpers.swift in Sources */,
+				ED25D33D8A17BC1D95829E63 /* MIDISequencer.swift in Sources */,
+				D998BB608DC5EE4A95D5DA98 /* MixerPanelView.swift in Sources */,
+				8333811C8BA7BF7AD9E13963 /* NoteEvent.swift in Sources */,
+				94E5DA47A503D02C5E66E0D4 /* NoteSegmenter.swift in Sources */,
+				4150030574DA8E3ADEF89943 /* OnboardingFlow.swift in Sources */,
+				4D53ABB1847194AB583DC205 /* OnboardingViewModel.swift in Sources */,
+				DF0FBD217678A8FB1396F728 /* Pattern.swift in Sources */,
+				2B5516CD72858B55778FC148 /* PatternDetection.swift in Sources */,
+				5464E81A3E359A98154539D0 /* PatternMatcher.swift in Sources */,
+				7BF6AF55E045046922273812 /* PitchDetector.swift in Sources */,
+				D8A8709D3EFDEEE97915267D /* ProfileView.swift in Sources */,
+				17C2100BD2198B48F968A6B7 /* ProgressRing.swift in Sources */,
+				0A2CF95093137F307C09BB19 /* ResultsView.swift in Sources */,
+				538DCB2733A4D015570E5C46 /* ResultsViewModel.swift in Sources */,
+				A4959936EA1DB5744A03F7F5 /* ScoreEngine.swift in Sources */,
+				F0265BBBAEB4A3F686E0B52E /* Session.swift in Sources */,
+				062FC47EE87F05F771287C3B /* SessionViewModel.swift in Sources */,
+				B29094E1943ECC8CF16412B1 /* SkillNodeProgress.swift in Sources */,
+				5A2C0C0DCF14334031656E04 /* SkillTreeData.swift in Sources */,
+				03A795EB10160FA7C8283B06 /* SkillTreeView.swift in Sources */,
+				DF759A0873A2D2CD3C240BAB /* SkillTreeViewModel.swift in Sources */,
+				B824002F77AA0843A2C996A2 /* Spacing.swift in Sources */,
+				42255A30F5E1F298A5BBF6E7 /* StatsView.swift in Sources */,
+				D71C523507372214642C8A17 /* StatsViewModel.swift in Sources */,
+				A3EF10117FDEB9A377499265 /* StreakManager.swift in Sources */,
+				35D75B1FD918A75BD442E1A7 /* StylePatterns.swift in Sources */,
+				9F16D65EB944507047DB4072 /* Tune.swift in Sources */,
+				913C2F5E753AE991C9BC03C6 /* TuneLibrary.swift in Sources */,
+				C0514611C94CD4B3A0A3E9BE /* TuneSelectionView.swift in Sources */,
+				0BDE67B38677D43C7F3951E0 /* TuneSelectionViewModel.swift in Sources */,
+				DA53C4E8B682FE3CDE04790F /* Typography.swift in Sources */,
+				7EE737FB3198FDAA1D03A7BE /* User.swift in Sources */,
+				916539A7DAF130A3884128B0 /* VocabularyItem.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE4304141928EFCE111F484F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B20D44421EF3AD82D7A8FD0C /* ChordTests.swift in Sources */,
+				9AF4B54DBA47044A57E08D80 /* MIDIHelpersTests.swift in Sources */,
+				8F7FD6C1FD6CB10A5045319C /* NoteSegmenterTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C03C50625019049554DD6FB8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A8771784E8F491A62FF40492 /* JazzShed */;
+			targetProxy = AC2D68D43B62AECEFADD4004 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		6C82FCBB6E5766798A5FE030 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3QDHY3732A;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_GENERATION_MODE = GeneratedFile;
+				INFOPLIST_KEY_CFBundleDisplayName = JazzShed;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "JazzShed needs microphone access to detect the notes you play on your instrument.";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.joshuakim.JazzShed;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		710B02A76F3C9956B2AB83E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		84AA0BE469169D317088FFBC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		87BFDE6B29C9DAA8C0EF97EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3QDHY3732A;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_GENERATION_MODE = GeneratedFile;
+				INFOPLIST_KEY_CFBundleDisplayName = JazzShed;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "JazzShed needs microphone access to detect the notes you play on your instrument.";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.joshuakim.JazzShed;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AD503ECA5514E6A60347B638 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.joshuakim.JazzShedTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JazzShed.app/JazzShed";
+			};
+			name = Debug;
+		};
+		EF001202ED81C3F624C2F1DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.joshuakim.JazzShedTests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JazzShed.app/JazzShed";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A823E6266260D10D095A507E /* Build configuration list for PBXProject "JazzShed" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				710B02A76F3C9956B2AB83E6 /* Debug */,
+				84AA0BE469169D317088FFBC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D7AE2CDE36CA1D2BDF3D83BA /* Build configuration list for PBXNativeTarget "JazzShedTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AD503ECA5514E6A60347B638 /* Debug */,
+				EF001202ED81C3F624C2F1DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F40BC21D16DE9786BF80877C /* Build configuration list for PBXNativeTarget "JazzShed" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				87BFDE6B29C9DAA8C0EF97EF /* Debug */,
+				6C82FCBB6E5766798A5FE030 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F41FA5132AF346259333BA0F /* Project object */;
+}

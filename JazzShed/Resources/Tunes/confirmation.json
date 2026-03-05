@@ -1,0 +1,109 @@
+{
+  "id": "confirmation",
+  "title": "Confirmation",
+  "composer": "Charlie Parker",
+  "originalKey": "F",
+  "form": "AABA",
+  "timeSignature": [4, 4],
+  "defaultTempo": 180,
+  "difficulty": 4,
+  "sections": [
+    {
+      "label": "A1",
+      "bars": [
+        { "chords": [{ "root": "F", "quality": "maj7", "beats": 4 }] },
+        { "chords": [
+          { "root": "E", "quality": "min7b5", "beats": 2 },
+          { "root": "A", "quality": "7", "beats": 2 }
+        ]},
+        { "chords": [
+          { "root": "D", "quality": "min7", "beats": 2 },
+          { "root": "G", "quality": "7", "beats": 2 }
+        ]},
+        { "chords": [
+          { "root": "C", "quality": "min7", "beats": 2 },
+          { "root": "F", "quality": "7", "beats": 2 }
+        ]},
+        { "chords": [{ "root": "Bb", "quality": "7", "beats": 4 }] },
+        { "chords": [
+          { "root": "A", "quality": "min7", "beats": 2 },
+          { "root": "D", "quality": "7", "beats": 2 }
+        ]},
+        { "chords": [{ "root": "G", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "C", "quality": "7", "beats": 4 }] }
+      ]
+    },
+    {
+      "label": "A2",
+      "bars": [
+        { "chords": [{ "root": "F", "quality": "maj7", "beats": 4 }] },
+        { "chords": [
+          { "root": "E", "quality": "min7b5", "beats": 2 },
+          { "root": "A", "quality": "7", "beats": 2 }
+        ]},
+        { "chords": [
+          { "root": "D", "quality": "min7", "beats": 2 },
+          { "root": "G", "quality": "7", "beats": 2 }
+        ]},
+        { "chords": [
+          { "root": "C", "quality": "min7", "beats": 2 },
+          { "root": "F", "quality": "7", "beats": 2 }
+        ]},
+        { "chords": [{ "root": "Bb", "quality": "7", "beats": 4 }] },
+        { "chords": [
+          { "root": "A", "quality": "min7", "beats": 2 },
+          { "root": "D", "quality": "7", "beats": 2 }
+        ]},
+        { "chords": [
+          { "root": "G", "quality": "min7", "beats": 2 },
+          { "root": "C", "quality": "7", "beats": 2 }
+        ]},
+        { "chords": [{ "root": "F", "quality": "maj7", "beats": 4 }] }
+      ]
+    },
+    {
+      "label": "B",
+      "bars": [
+        { "chords": [{ "root": "C", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "F", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "Bb", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "Bb", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "Eb", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "Ab", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "Db", "quality": "maj7", "beats": 4 }] },
+        { "chords": [
+          { "root": "G", "quality": "min7", "beats": 2 },
+          { "root": "C", "quality": "7", "beats": 2 }
+        ]}
+      ]
+    },
+    {
+      "label": "A3",
+      "bars": [
+        { "chords": [{ "root": "F", "quality": "maj7", "beats": 4 }] },
+        { "chords": [
+          { "root": "E", "quality": "min7b5", "beats": 2 },
+          { "root": "A", "quality": "7", "beats": 2 }
+        ]},
+        { "chords": [
+          { "root": "D", "quality": "min7", "beats": 2 },
+          { "root": "G", "quality": "7", "beats": 2 }
+        ]},
+        { "chords": [
+          { "root": "C", "quality": "min7", "beats": 2 },
+          { "root": "F", "quality": "7", "beats": 2 }
+        ]},
+        { "chords": [{ "root": "Bb", "quality": "7", "beats": 4 }] },
+        { "chords": [
+          { "root": "A", "quality": "min7", "beats": 2 },
+          { "root": "D", "quality": "7", "beats": 2 }
+        ]},
+        { "chords": [
+          { "root": "G", "quality": "min7", "beats": 2 },
+          { "root": "C", "quality": "7", "beats": 2 }
+        ]},
+        { "chords": [{ "root": "F", "quality": "maj7", "beats": 4 }] }
+      ]
+    }
+  ]
+}

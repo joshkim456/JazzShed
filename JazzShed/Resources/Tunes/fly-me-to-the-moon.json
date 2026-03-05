@@ -1,0 +1,70 @@
+{
+  "id": "fly-me-to-the-moon",
+  "title": "Fly Me To The Moon",
+  "composer": "Bart Howard",
+  "originalKey": "C",
+  "form": "AABA",
+  "timeSignature": [4, 4],
+  "defaultTempo": 130,
+  "difficulty": 1,
+  "sections": [
+    {
+      "label": "A1",
+      "bars": [
+        { "chords": [{ "root": "A", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "D", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "G", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "C", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "F", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "B", "quality": "min7b5", "beats": 4 }] },
+        { "chords": [{ "root": "E", "quality": "7", "beats": 4 }] },
+        { "chords": [
+          { "root": "A", "quality": "min7", "beats": 2 },
+          { "root": "A", "quality": "7", "beats": 2 }
+        ]}
+      ]
+    },
+    {
+      "label": "A2",
+      "bars": [
+        { "chords": [{ "root": "D", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "G", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "C", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "A", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "D", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "G", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "C", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "E", "quality": "7", "beats": 4 }] }
+      ]
+    },
+    {
+      "label": "B",
+      "bars": [
+        { "chords": [{ "root": "A", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "D", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "G", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "C", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "F", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "B", "quality": "min7b5", "beats": 4 }] },
+        { "chords": [{ "root": "E", "quality": "7", "beats": 4 }] },
+        { "chords": [
+          { "root": "A", "quality": "min7", "beats": 2 },
+          { "root": "A", "quality": "7", "beats": 2 }
+        ]}
+      ]
+    },
+    {
+      "label": "A3",
+      "bars": [
+        { "chords": [{ "root": "D", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "G", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "C", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "A", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "D", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "G", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "C", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "C", "quality": "maj7", "beats": 4 }] }
+      ]
+    }
+  ]
+}

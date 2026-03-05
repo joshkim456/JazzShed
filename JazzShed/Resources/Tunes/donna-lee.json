@@ -1,0 +1,66 @@
+{
+  "id": "donna-lee",
+  "title": "Donna Lee",
+  "composer": "Charlie Parker",
+  "originalKey": "Ab",
+  "form": "AB",
+  "timeSignature": [4, 4],
+  "defaultTempo": 180,
+  "difficulty": 5,
+  "sections": [
+    {
+      "label": "A",
+      "bars": [
+        { "chords": [{ "root": "Ab", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "F", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "Bb", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "Bb", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "Bb", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "Eb", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "Ab", "quality": "maj7", "beats": 4 }] },
+        { "chords": [
+          { "root": "Eb", "quality": "min7", "beats": 2 },
+          { "root": "Ab", "quality": "7", "beats": 2 }
+        ]},
+        { "chords": [{ "root": "Db", "quality": "maj7", "beats": 4 }] },
+        { "chords": [
+          { "root": "D", "quality": "min7b5", "beats": 2 },
+          { "root": "G", "quality": "7", "beats": 2 }
+        ]},
+        { "chords": [{ "root": "C", "quality": "maj7", "beats": 4 }] },
+        { "chords": [
+          { "root": "C", "quality": "min7", "beats": 2 },
+          { "root": "F", "quality": "7", "beats": 2 }
+        ]},
+        { "chords": [{ "root": "Bb", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "Bb", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "Bb", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "Eb", "quality": "7", "beats": 4 }] }
+      ]
+    },
+    {
+      "label": "B",
+      "bars": [
+        { "chords": [{ "root": "Ab", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "F", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "Bb", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "Bb", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "Bb", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "Eb", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "Ab", "quality": "maj7", "beats": 4 }] },
+        { "chords": [
+          { "root": "Eb", "quality": "min7", "beats": 2 },
+          { "root": "Ab", "quality": "7", "beats": 2 }
+        ]},
+        { "chords": [{ "root": "Db", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "Db", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "C", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "F", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "Bb", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "Eb", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "Ab", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "Ab", "quality": "maj7", "beats": 4 }] }
+      ]
+    }
+  ]
+}

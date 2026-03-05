@@ -1,0 +1,38 @@
+{
+  "id": "blue-bossa",
+  "title": "Blue Bossa",
+  "composer": "Kenny Dorham",
+  "originalKey": "Cm",
+  "form": "AB",
+  "timeSignature": [4, 4],
+  "defaultTempo": 140,
+  "difficulty": 1,
+  "sections": [
+    {
+      "label": "A",
+      "bars": [
+        { "chords": [{ "root": "C", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "C", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "F", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "F", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "D", "quality": "min7b5", "beats": 4 }] },
+        { "chords": [{ "root": "G", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "C", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "C", "quality": "min7", "beats": 4 }] }
+      ]
+    },
+    {
+      "label": "B",
+      "bars": [
+        { "chords": [{ "root": "Eb", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "Ab", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "Db", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "Db", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "D", "quality": "min7b5", "beats": 4 }] },
+        { "chords": [{ "root": "G", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "C", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "C", "quality": "min7", "beats": 4 }] }
+      ]
+    }
+  ]
+}

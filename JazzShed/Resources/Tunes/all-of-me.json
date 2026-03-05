@@ -1,0 +1,67 @@
+{
+  "id": "all-of-me",
+  "title": "All Of Me",
+  "composer": "Gerald Marks / Seymour Simons",
+  "originalKey": "C",
+  "form": "AABA",
+  "timeSignature": [4, 4],
+  "defaultTempo": 130,
+  "difficulty": 2,
+  "sections": [
+    {
+      "label": "A1",
+      "bars": [
+        { "chords": [{ "root": "C", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "C", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "E", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "E", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "A", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "A", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "D", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "D", "quality": "min7", "beats": 4 }] }
+      ]
+    },
+    {
+      "label": "A2",
+      "bars": [
+        { "chords": [{ "root": "E", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "E", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "A", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "A", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "D", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "D", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "D", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "G", "quality": "7", "beats": 4 }] }
+      ]
+    },
+    {
+      "label": "B",
+      "bars": [
+        { "chords": [{ "root": "C", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "C", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "E", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "E", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "A", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "A", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "D", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "D", "quality": "min7", "beats": 4 }] }
+      ]
+    },
+    {
+      "label": "A3",
+      "bars": [
+        { "chords": [{ "root": "F", "quality": "maj", "beats": 4 }] },
+        { "chords": [{ "root": "F", "quality": "min", "beats": 4 }] },
+        { "chords": [
+          { "root": "C", "quality": "maj7", "beats": 2 },
+          { "root": "E", "quality": "min7", "beats": 2 }
+        ]},
+        { "chords": [{ "root": "A", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "D", "quality": "min7", "beats": 4 }] },
+        { "chords": [{ "root": "G", "quality": "7", "beats": 4 }] },
+        { "chords": [{ "root": "C", "quality": "maj7", "beats": 4 }] },
+        { "chords": [{ "root": "C", "quality": "maj7", "beats": 4 }] }
+      ]
+    }
+  ]
+}
