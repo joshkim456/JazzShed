@@ -10,6 +10,7 @@
 		03A795EB10160FA7C8283B06 /* SkillTreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C375F157C3BAC5D636E2429 /* SkillTreeView.swift */; };
 		062FC47EE87F05F771287C3B /* SessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00AEF52B937F9CDDF0D76DD8 /* SessionViewModel.swift */; };
 		082A32EB156DC07CB7E87621 /* JazzShedApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6C090AB4C0DCDF36783104 /* JazzShedApp.swift */; };
+		08A5EE4066100A56F5FBC79B /* PitchDetectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E8908E738410599617AA65 /* PitchDetectorTests.swift */; };
 		0962D42DC7CA1F5F4AF17326 /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3340B66A26740456ECB077DA /* Chord.swift */; };
 		0A2CF95093137F307C09BB19 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9AAF025AC7E1C9CF4094C8 /* ResultsView.swift */; };
 		0BDE67B38677D43C7F3951E0 /* TuneSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C454FBF0B2001761431F3743 /* TuneSelectionViewModel.swift */; };
@@ -160,6 +161,7 @@
 		F56DAAC60AB67FF3BA373B3B /* ContextEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextEngine.swift; sourceTree = "<group>"; };
 		F73640339669C8CCC09FA51C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		F884A0AF6CE7458FB760D5B3 /* StylePatterns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StylePatterns.swift; sourceTree = "<group>"; };
+		F8E8908E738410599617AA65 /* PitchDetectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchDetectorTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -350,6 +352,7 @@
 				4F497003CF2FC43561C3CE57 /* ChordTests.swift */,
 				45B1417DD70897E41BB5885C /* MIDIHelpersTests.swift */,
 				785DB18CA510F02FD3D99B00 /* NoteSegmenterTests.swift */,
+				F8E8908E738410599617AA65 /* PitchDetectorTests.swift */,
 			);
 			path = JazzShedTests;
 			sourceTree = "<group>";
@@ -627,6 +630,7 @@
 				B20D44421EF3AD82D7A8FD0C /* ChordTests.swift in Sources */,
 				9AF4B54DBA47044A57E08D80 /* MIDIHelpersTests.swift in Sources */,
 				8F7FD6C1FD6CB10A5045319C /* NoteSegmenterTests.swift in Sources */,
+				08A5EE4066100A56F5FBC79B /* PitchDetectorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -647,7 +651,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 3QDHY3732A;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_GENERATION_MODE = GeneratedFile;
 				INFOPLIST_KEY_CFBundleDisplayName = JazzShed;
@@ -792,7 +796,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 3QDHY3732A;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_GENERATION_MODE = GeneratedFile;
 				INFOPLIST_KEY_CFBundleDisplayName = JazzShed;

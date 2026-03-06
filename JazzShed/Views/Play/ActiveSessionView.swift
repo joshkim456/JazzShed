@@ -63,6 +63,9 @@ struct ActiveSessionView: View {
             // Score + Combo
             scoreBar
 
+            // Live note indicator
+            liveNoteDisplay
+
             // Chord chart
             if let tune = viewModel.tune {
                 ChordChartView(
@@ -164,6 +167,53 @@ struct ActiveSessionView: View {
         .padding(.vertical, 8)
         .animation(.easeInOut(duration: 0.2), value: viewModel.scoreEngine.totalScore)
         .animation(.easeInOut(duration: 0.2), value: viewModel.scoreEngine.comboCount)
+    }
+
+    private var liveNoteDisplay: some View {
+        HStack(spacing: 12) {
+            // Colored dot indicator
+            Circle()
+                .fill(noteQualityColor)
+                .frame(width: 10, height: 10)
+
+            // Note name
+            Text(viewModel.liveNoteName)
+                .font(.system(.title, design: .monospaced).weight(.bold))
+                .foregroundStyle(noteQualityColor)
+                .contentTransition(.numericText())
+
+            // Quality label
+            if viewModel.liveNoteQuality != .none {
+                Text(noteQualityLabel)
+                    .font(.caption)
+                    .foregroundStyle(noteQualityColor.opacity(0.8))
+            }
+        }
+        .frame(height: 44)
+        .frame(maxWidth: .infinity)
+        .background(JazzColors.surface.opacity(0.5))
+        .animation(.easeInOut(duration: 0.1), value: viewModel.liveNoteName)
+        .animation(.easeInOut(duration: 0.1), value: viewModel.liveNoteQuality != .none)
+    }
+
+    private var noteQualityColor: Color {
+        switch viewModel.liveNoteQuality {
+        case .chordTone: return JazzColors.gold
+        case .scaleTone: return JazzColors.success
+        case .chromatic: return JazzColors.textSecondary
+        case .clashing: return JazzColors.accent
+        case .none: return JazzColors.textMuted
+        }
+    }
+
+    private var noteQualityLabel: String {
+        switch viewModel.liveNoteQuality {
+        case .chordTone: return "Chord Tone"
+        case .scaleTone: return "Scale Tone"
+        case .chromatic: return "Chromatic"
+        case .clashing: return "Clashing"
+        case .none: return ""
+        }
     }
 
     private var comboColor: Color {

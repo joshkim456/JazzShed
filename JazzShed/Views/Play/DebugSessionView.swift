@@ -255,8 +255,8 @@ struct DebugSessionView: View {
             noteSegmenter.sessionStartTime = ProcessInfo.processInfo.systemUptime
 
             // Wire pitch detector → note segmenter
-            pitchDetector.onPitchDetected = { freq, amp, midi in
-                noteSegmenter.processFrame(frequency: freq, amplitude: amp, midiNote: midi)
+            pitchDetector.onPitchDetected = { freq, amp, midi, onset in
+                noteSegmenter.processFrame(frequency: freq, amplitude: amp, midiNote: midi, onsetDetected: onset)
             }
 
             noteSegmenter.onNoteEnd = { note in

@@ -10,7 +10,8 @@ import Observation
 @Observable
 final class NoteSegmenter {
     /// Minimum consecutive frames at the same MIDI note to confirm a new note.
-    let stabilityFrames = 3
+    /// 2 frames ≈ 46ms at 1024-hop/44.1kHz — fast enough for sixteenth notes at 200 BPM.
+    let stabilityFrames = 2
 
     /// Maximum glitch frames tolerated during candidate confirmation.
     let maxGapFrames = 1
@@ -46,7 +47,8 @@ final class NoteSegmenter {
     ///   - frequency: Detected frequency (0 = silence)
     ///   - amplitude: Detected amplitude
     ///   - midiNote: MIDI note number (0 = silence)
-    func processFrame(frequency: Float, amplitude: Float, midiNote: Int) {
+    ///   - onsetDetected: Whether spectral flux onset was detected this frame (default false for backward compat)
+    func processFrame(frequency: Float, amplitude: Float, midiNote: Int, onsetDetected: Bool = false) {
         let now = ProcessInfo.processInfo.systemUptime
 
         if midiNote == 0 {
@@ -58,6 +60,31 @@ final class NoteSegmenter {
             return
         }
 
+        // Onset-aware fast paths — skip stability wait when an attack transient is detected
+        if onsetDetected {
+            if activeNote != 0 && midiNote != activeNote {
+                // Onset + different pitch + active note → immediate transition
+                endActiveNote(at: now)
+                startNewNote(midiNote: midiNote, frequency: frequency, amplitude: amplitude, at: now)
+                candidateNote = 0
+                candidateCount = 0
+                candidateGap = 0
+                return
+            }
+
+            if activeNote == 0 {
+                // Onset + no active note → start immediately from silence
+                startNewNote(midiNote: midiNote, frequency: frequency, amplitude: amplitude, at: now)
+                candidateNote = 0
+                candidateCount = 0
+                candidateGap = 0
+                return
+            }
+
+            // Onset + same pitch → fall through to normal logic (don't split re-articulations)
+        }
+
+        // Existing behavior (unchanged)
         if midiNote == activeNote {
             // Same note continuing — update peak amplitude
             activeNoteAmplitude = max(activeNoteAmplitude, amplitude)

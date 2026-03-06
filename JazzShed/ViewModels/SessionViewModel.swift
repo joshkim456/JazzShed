@@ -53,6 +53,13 @@ final class SessionViewModel: Identifiable {
     private(set) var elapsedSeconds: Int = 0
     private(set) var error: String?
 
+    // Live note display
+    enum NoteDisplayQuality {
+        case chordTone, scaleTone, chromatic, clashing, none
+    }
+    private(set) var liveNoteName: String = "-"
+    private(set) var liveNoteQuality: NoteDisplayQuality = .none
+
     // Pattern popup display
     private(set) var activePopup: PatternDetection?
     private var popupTimer: Timer?
@@ -273,8 +280,8 @@ final class SessionViewModel: Identifiable {
         patternMatcher.reset()
 
         // PitchDetector → NoteSegmenter
-        pitchDetector.onPitchDetected = { [weak self] freq, amp, midi in
-            self?.noteSegmenter.processFrame(frequency: freq, amplitude: amp, midiNote: midi)
+        pitchDetector.onPitchDetected = { [weak self] freq, amp, midi, onset in
+            self?.noteSegmenter.processFrame(frequency: freq, amplitude: amp, midiNote: midi, onsetDetected: onset)
         }
 
         // NoteSegmenter → ContextEngine → PatternMatcher → ScoreEngine
@@ -282,6 +289,8 @@ final class SessionViewModel: Identifiable {
             guard let self else { return }
             Task { @MainActor in
                 self.processCompletedNote(note)
+                self.liveNoteName = "-"
+                self.liveNoteQuality = .none
             }
         }
 
@@ -289,11 +298,14 @@ final class SessionViewModel: Identifiable {
         noteSegmenter.onNoteStart = { [weak self] note in
             guard let self else { return }
             Task { @MainActor in
-                var enriched = self.contextEngine.enriched(note)
+                let enriched = self.contextEngine.enriched(note)
                 // Update current chord display
                 if let symbol = enriched.chordSymbol {
                     self.currentChordSymbol = symbol
                 }
+                // Update live note display
+                self.liveNoteName = MIDIHelpers.noteLabel(for: enriched.midiNote)
+                self.liveNoteQuality = self.classifyForDisplay(enriched)
             }
         }
 
@@ -306,6 +318,29 @@ final class SessionViewModel: Identifiable {
                 self.showPopup(detection)
             }
         }
+    }
+
+    private func classifyForDisplay(_ note: NoteEvent) -> NoteDisplayQuality {
+        guard let isChordTone = note.isChordTone,
+              let scaleDegree = note.scaleDegree else {
+            return .none
+        }
+        if isChordTone { return .chordTone }
+
+        // Check scale tones via chord quality
+        if let chordSymbol = note.chordSymbol {
+            for quality in ChordQuality.allCases {
+                if chordSymbol.hasSuffix(quality.symbol),
+                   quality.scaleTones.contains(scaleDegree) {
+                    return .scaleTone
+                }
+            }
+        }
+
+        // Common chromatic passing tones (b3 blue note, b6)
+        if [3, 8].contains(scaleDegree) { return .chromatic }
+
+        return .clashing
     }
 
     @MainActor

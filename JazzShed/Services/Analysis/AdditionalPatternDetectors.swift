@@ -211,12 +211,16 @@ struct SpaceDetector: PatternDetector {
         let last = notes[notes.count - 1]
         let prev = notes[notes.count - 2]
 
-        // Check for a gap of at least 1 beat between the end of prev and start of last
         guard let lastBeat = last.beat, let prevBeat = prev.beat else { return nil }
+
+        // Only fire on the first note after the gap — last note must be the one just played
+        guard abs(lastBeat - currentBeat) < 1.0 else { return nil }
+
+        // Check for a gap of more than 1 bar (4 beats) between the end of prev and start of last
         let prevEndBeat = prevBeat + (prev.duration > 0 ? prev.duration * Double(120) / 60.0 : 0.5)
         let gap = lastBeat - prevEndBeat
 
-        guard gap >= 1.0 else { return nil }
+        guard gap > 4.0 else { return nil }
 
         return PatternDetection(
             patternId: patternId, patternName: patternName,

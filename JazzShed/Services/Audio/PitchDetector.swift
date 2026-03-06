@@ -12,6 +12,12 @@ import Observation
 final class PitchDetector {
     @ObservationIgnored private var audioEngine: AVAudioEngine?
 
+    /// Serial queue for pitch analysis — keeps work off the real-time audio thread
+    @ObservationIgnored private let processingQueue = DispatchQueue(
+        label: "com.jazzshed.pitch-analysis",
+        qos: .userInteractive
+    )
+
     // Ring buffer: accumulate 1024-sample chunks, analyze 4096-sample windows
     @ObservationIgnored private let analysisSize = 4096
     @ObservationIgnored private let hopSize: UInt32 = 1024
@@ -20,10 +26,31 @@ final class PitchDetector {
     @ObservationIgnored private var samplesAccumulated = 0
 
     // YIN parameters
-    @ObservationIgnored private let yinThreshold: Float = 0.15
+    @ObservationIgnored private let yinThreshold: Float = 0.20
     @ObservationIgnored private let minFrequency: Float = 50    // Hz — below lowest common jazz note
     @ObservationIgnored private let maxFrequency: Float = 4200  // Hz — above top of piano
-    @ObservationIgnored private var sampleRate: Float = 44100
+    @ObservationIgnored var sampleRate: Float = 44100
+
+    // Onset detection (spectral flux) — 1024-point FFT
+    @ObservationIgnored private let onsetFFTSize = 1024
+    @ObservationIgnored private let onsetSpectrumSize = 512  // FFT size / 2
+    @ObservationIgnored private var fftSetup: FFTSetup?
+    @ObservationIgnored private var fftWindow: [Float] = []
+    @ObservationIgnored private var fftInputReal: [Float] = []
+    @ObservationIgnored private var fftInputImag: [Float] = []
+    @ObservationIgnored private var magnitudeSpectrum: [Float] = []
+    @ObservationIgnored private var logMagnitude: [Float] = []
+    @ObservationIgnored private var prevLogMagnitude: [Float] = []
+    @ObservationIgnored private var fluxHistory: [Float] = []
+    @ObservationIgnored private var fluxWriteIndex = 0
+    @ObservationIgnored private let fluxHistorySize = 50
+    @ObservationIgnored private var lastOnsetSampleTime: Int = 0
+    @ObservationIgnored var totalSamplesProcessed: Int = 0
+
+    // Onset detection constants
+    @ObservationIgnored private let logCompressionGamma: Float = 100
+    @ObservationIgnored private let thresholdOffset: Float = 1.5
+    @ObservationIgnored private let minInterOnsetSamples = 2205  // ~50ms at 44.1kHz
 
     private(set) var isTracking = false
     private(set) var currentFrequency: Float = 0
@@ -32,11 +59,43 @@ final class PitchDetector {
     private(set) var currentNoteName: String = "-"
 
     /// Callback fired on each pitch frame.
-    /// Parameters: (frequency, amplitude, midiNote)
-    var onPitchDetected: ((Float, Float, Int) -> Void)?
+    /// Parameters: (frequency, amplitude, midiNote, onsetDetected)
+    var onPitchDetected: ((Float, Float, Int, Bool) -> Void)?
 
     /// Minimum RMS amplitude to consider a valid signal (filters noise).
-    let amplitudeThreshold: Float = 0.02
+    let amplitudeThreshold: Float = 0.008
+
+    /// Initialize all buffers (ring buffer + FFT). Call before processing frames.
+    /// Separated from start() so tests can init buffers without the audio engine.
+    func initializeBuffers() {
+        // Ring buffer
+        ringBuffer = [Float](repeating: 0, count: analysisSize)
+        ringWriteIndex = 0
+        samplesAccumulated = 0
+
+        // FFT setup for onset detection
+        let log2n = vDSP_Length(log2(Float(onsetFFTSize)))
+        fftSetup = vDSP_create_fftsetup(log2n, FFTRadix(kFFTRadix2))
+
+        // Hann window (FFT needs windowing to avoid spectral leakage)
+        fftWindow = [Float](repeating: 0, count: onsetFFTSize)
+        vDSP_hann_window(&fftWindow, vDSP_Length(onsetFFTSize), Int32(vDSP_HANN_NORM))
+
+        // Split complex working buffers
+        fftInputReal = [Float](repeating: 0, count: onsetSpectrumSize)
+        fftInputImag = [Float](repeating: 0, count: onsetSpectrumSize)
+
+        // Magnitude spectra
+        magnitudeSpectrum = [Float](repeating: 0, count: onsetSpectrumSize)
+        logMagnitude = [Float](repeating: 0, count: onsetSpectrumSize)
+        prevLogMagnitude = [Float](repeating: 0, count: onsetSpectrumSize)
+
+        // Flux history ring buffer
+        fluxHistory = [Float](repeating: 0, count: fluxHistorySize)
+        fluxWriteIndex = 0
+        lastOnsetSampleTime = 0
+        totalSamplesProcessed = 0
+    }
 
     func start() throws {
         let engine = AVAudioEngine()
@@ -51,10 +110,8 @@ final class PitchDetector {
         // Silence output — we only analyze, don't route mic to speakers
         engine.mainMixerNode.outputVolume = 0
 
-        // Initialize ring buffer
-        ringBuffer = [Float](repeating: 0, count: analysisSize)
-        ringWriteIndex = 0
-        samplesAccumulated = 0
+        // Initialize all buffers
+        initializeBuffers()
 
         let recordingFormat = AVAudioFormat(
             commonFormat: .pcmFormatFloat32,
@@ -82,6 +139,11 @@ final class PitchDetector {
         currentAmplitude = 0
         currentMIDINote = 0
         currentNoteName = "-"
+
+        if let setup = fftSetup {
+            vDSP_destroy_fftsetup(setup)
+            fftSetup = nil
+        }
     }
 
     // MARK: - Audio Buffer Handling
@@ -90,7 +152,7 @@ final class PitchDetector {
         guard let channelData = buffer.floatChannelData?[0] else { return }
         let frameCount = Int(buffer.frameLength)
 
-        // Copy samples into ring buffer
+        // Copy samples into ring buffer (fast — safe on audio thread)
         for i in 0..<frameCount {
             ringBuffer[ringWriteIndex] = channelData[i]
             ringWriteIndex = (ringWriteIndex + 1) % analysisSize
@@ -100,7 +162,17 @@ final class PitchDetector {
         // Need at least one full window before analyzing
         guard samplesAccumulated >= analysisSize else { return }
 
-        // Linearize ring buffer into contiguous analysis frame
+        // Snapshot the ring buffer state for off-thread analysis
+        let frame = linearizeRingBuffer()
+
+        // Dispatch heavy analysis off the real-time audio thread
+        processingQueue.async { [weak self] in
+            self?.analyzeFrame(frame)
+        }
+    }
+
+    /// Linearize the ring buffer into a contiguous analysis frame.
+    private func linearizeRingBuffer() -> [Float] {
         var frame = [Float](repeating: 0, count: analysisSize)
         let firstPart = analysisSize - ringWriteIndex
         if firstPart > 0 {
@@ -109,24 +181,108 @@ final class PitchDetector {
         if ringWriteIndex > 0 {
             frame[firstPart..<analysisSize] = ringBuffer[0..<ringWriteIndex]
         }
+        return frame
+    }
+
+    /// Run onset detection, RMS check, and YIN on the processing queue, then deliver result to main thread.
+    private func analyzeFrame(_ frame: [Float]) {
+        // Track total samples for inter-onset timing
+        totalSamplesProcessed += Int(hopSize)
+
+        // Onset detection on last 1024 samples (runs even during silence — attack may start here)
+        let onsetSlice = frame[(analysisSize - onsetFFTSize)..<analysisSize]
+        let onsetDetected = detectOnset(onsetSlice)
 
         // RMS amplitude check
         var rms: Float = 0
         vDSP_rmsqv(frame, 1, &rms, vDSP_Length(analysisSize))
 
         guard rms > amplitudeThreshold else {
-            Task { @MainActor in
-                self.processResult(frequency: 0, amplitude: rms)
+            DispatchQueue.main.async { [weak self] in
+                self?.processResult(frequency: 0, amplitude: rms, onsetDetected: onsetDetected)
             }
             return
         }
 
-        // Run YIN on raw samples (no windowing — YIN's difference function assumes stationary signal)
         let frequency = yinEstimate(frame)
 
-        Task { @MainActor in
-            self.processResult(frequency: frequency, amplitude: rms)
+        DispatchQueue.main.async { [weak self] in
+            self?.processResult(frequency: frequency, amplitude: rms, onsetDetected: onsetDetected)
         }
+    }
+
+    // MARK: - Onset Detection (Spectral Flux)
+
+    /// Detects note onsets via spectral flux on a 1024-sample slice.
+    /// Internal (not private) for testability.
+    /// - Parameter samples: A 1024-sample audio slice (typically the last quarter of the analysis window).
+    /// - Returns: `true` if an onset was detected.
+    func detectOnset(_ samples: ArraySlice<Float>) -> Bool {
+        guard let setup = fftSetup, samples.count == onsetFFTSize else { return false }
+
+        // 1. Apply Hann window
+        var windowed = [Float](repeating: 0, count: onsetFFTSize)
+        Array(samples).withUnsafeBufferPointer { src in
+            vDSP_vmul(src.baseAddress!, 1, fftWindow, 1, &windowed, 1, vDSP_Length(onsetFFTSize))
+        }
+
+        // 2. Pack into split complex format for real FFT
+        //    Even indices → real, odd indices → imaginary
+        for i in 0..<onsetSpectrumSize {
+            fftInputReal[i] = windowed[2 * i]
+            fftInputImag[i] = windowed[2 * i + 1]
+        }
+
+        // 3. Forward real FFT
+        let log2n = vDSP_Length(log2(Float(onsetFFTSize)))
+        fftInputReal.withUnsafeMutableBufferPointer { realPtr in
+            fftInputImag.withUnsafeMutableBufferPointer { imagPtr in
+                var splitComplex = DSPSplitComplex(
+                    realp: realPtr.baseAddress!,
+                    imagp: imagPtr.baseAddress!
+                )
+                vDSP_fft_zrip(setup, &splitComplex, 1, log2n, FFTDirection(kFFTDirection_Forward))
+
+                // 4. Magnitude spectrum
+                vDSP_zvabs(&splitComplex, 1, &magnitudeSpectrum, 1, vDSP_Length(onsetSpectrumSize))
+            }
+        }
+
+        // 5. Log compression: log(1 + gamma * M(k))
+        for k in 0..<onsetSpectrumSize {
+            logMagnitude[k] = logf(1.0 + logCompressionGamma * magnitudeSpectrum[k])
+        }
+
+        // 6. Half-wave rectified spectral flux: Σ max(0, current[k] - prev[k])²
+        var flux: Float = 0
+        for k in 0..<onsetSpectrumSize {
+            let diff = logMagnitude[k] - prevLogMagnitude[k]
+            if diff > 0 {
+                flux += diff * diff
+            }
+        }
+
+        // Save current as previous for next frame
+        prevLogMagnitude = logMagnitude
+
+        // 7. Update flux ring buffer
+        fluxHistory[fluxWriteIndex] = flux
+        fluxWriteIndex = (fluxWriteIndex + 1) % fluxHistorySize
+
+        // 8. Adaptive threshold: median + offset * mean over history
+        let sortedFlux = fluxHistory.sorted()
+        let median = sortedFlux[fluxHistorySize / 2]
+        let mean = sortedFlux.reduce(0, +) / Float(fluxHistorySize)
+        let threshold = median + thresholdOffset * mean
+
+        // 9. Peak pick: flux > threshold AND enough time since last onset
+        let elapsed = totalSamplesProcessed - lastOnsetSampleTime
+        if flux > threshold && elapsed >= minInterOnsetSamples {
+            lastOnsetSampleTime = totalSamplesProcessed
+            return true
+        }
+
+        return false
     }
 
     // MARK: - YIN Algorithm
@@ -138,7 +294,7 @@ final class PitchDetector {
     /// 2. Cumulative mean normalized difference d'(τ)
     /// 3. Absolute threshold search for first dip below `yinThreshold`
     /// 4. Parabolic interpolation for sub-sample accuracy
-    private func yinEstimate(_ frame: [Float]) -> Float {
+    func yinEstimate(_ frame: [Float]) -> Float {
         let halfWindow = analysisSize / 2
 
         // Lag range from frequency bounds
@@ -244,15 +400,15 @@ final class PitchDetector {
 
     // MARK: - Result Processing
 
-    @MainActor
-    private func processResult(frequency: Float, amplitude: Float) {
+    /// Called on main thread via DispatchQueue.main.async (serial, ordered delivery).
+    private func processResult(frequency: Float, amplitude: Float, onsetDetected: Bool = false) {
         currentFrequency = frequency
         currentAmplitude = amplitude
 
         guard frequency > 20, frequency < 8000 else {
             currentMIDINote = 0
             currentNoteName = "-"
-            onPitchDetected?(0, amplitude, 0)
+            onPitchDetected?(0, amplitude, 0, onsetDetected)
             return
         }
 
@@ -260,7 +416,7 @@ final class PitchDetector {
         currentMIDINote = midi
         currentNoteName = MIDIHelpers.noteLabel(for: midi)
 
-        onPitchDetected?(frequency, amplitude, midi)
+        onPitchDetected?(frequency, amplitude, midi, onsetDetected)
     }
 
 }
