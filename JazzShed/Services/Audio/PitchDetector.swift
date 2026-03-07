@@ -26,7 +26,7 @@ final class PitchDetector {
     @ObservationIgnored private var samplesAccumulated = 0
 
     // YIN parameters
-    @ObservationIgnored private let yinThreshold: Float = 0.20
+    @ObservationIgnored private let yinThreshold: Float = 0.30
     @ObservationIgnored private let minFrequency: Float = 50    // Hz — below lowest common jazz note
     @ObservationIgnored private let maxFrequency: Float = 4200  // Hz — above top of piano
     @ObservationIgnored var sampleRate: Float = 44100
@@ -51,6 +51,16 @@ final class PitchDetector {
     @ObservationIgnored private let logCompressionGamma: Float = 100
     @ObservationIgnored private let thresholdOffset: Float = 1.5
     @ObservationIgnored private let minInterOnsetSamples = 2205  // ~50ms at 44.1kHz
+
+    // Harmonic Sum Spectrum (HSS) — octave validator for piano/instrument detection
+    @ObservationIgnored private let hssHarmonics = 4
+    @ObservationIgnored private var hssFFTSetup: FFTSetup?
+    @ObservationIgnored private var hssWindow: [Float] = []
+    @ObservationIgnored private var hssReal: [Float] = []
+    @ObservationIgnored private var hssImag: [Float] = []
+    @ObservationIgnored private var hssMagnitude: [Float] = []
+    @ObservationIgnored private var hssLogMag: [Float] = []
+    @ObservationIgnored private var hssResult: [Float] = []
 
     private(set) var isTracking = false
     private(set) var currentFrequency: Float = 0
@@ -95,6 +105,18 @@ final class PitchDetector {
         fluxWriteIndex = 0
         lastOnsetSampleTime = 0
         totalSamplesProcessed = 0
+
+        // HSS buffers (reuses analysisSize = 4096)
+        let hssLog2n = vDSP_Length(log2(Float(analysisSize)))
+        hssFFTSetup = vDSP_create_fftsetup(hssLog2n, FFTRadix(kFFTRadix2))
+        hssWindow = [Float](repeating: 0, count: analysisSize)
+        vDSP_hann_window(&hssWindow, vDSP_Length(analysisSize), Int32(vDSP_HANN_NORM))
+        let hssSpectrumSize = analysisSize / 2
+        hssReal = [Float](repeating: 0, count: hssSpectrumSize)
+        hssImag = [Float](repeating: 0, count: hssSpectrumSize)
+        hssMagnitude = [Float](repeating: 0, count: hssSpectrumSize)
+        hssLogMag = [Float](repeating: 0, count: hssSpectrumSize)
+        hssResult = [Float](repeating: 0, count: hssSpectrumSize / hssHarmonics)
     }
 
     func start() throws {
@@ -143,6 +165,10 @@ final class PitchDetector {
         if let setup = fftSetup {
             vDSP_destroy_fftsetup(setup)
             fftSetup = nil
+        }
+        if let setup = hssFFTSetup {
+            vDSP_destroy_fftsetup(setup)
+            hssFFTSetup = nil
         }
     }
 
@@ -204,7 +230,9 @@ final class PitchDetector {
             return
         }
 
-        let frequency = yinEstimate(frame)
+        let yinFreq = yinEstimate(frame)
+        let hssFreq = hssEstimate(frame)
+        let frequency = arbitrate(yinFreq: yinFreq, hssFreq: hssFreq)
 
         DispatchQueue.main.async { [weak self] in
             self?.processResult(frequency: frequency, amplitude: rms, onsetDetected: onsetDetected)
@@ -396,6 +424,120 @@ final class PitchDetector {
 
         let adjustment = (s2 - s0) / (2.0 * denominator)
         return Float(tau) + adjustment
+    }
+
+    // MARK: - Harmonic Sum Spectrum (HSS)
+
+    /// Estimates the fundamental frequency using Harmonic Sum Spectrum.
+    /// Coarser than YIN but structurally immune to octave errors — harmonics
+    /// are collapsed onto the fundamental via frequency-domain summation.
+    /// Internal (not private) for testability.
+    func hssEstimate(_ frame: [Float]) -> Float {
+        let hssSpectrumSize = analysisSize / 2
+        let resultSize = hssSpectrumSize / hssHarmonics
+        guard let setup = hssFFTSetup, frame.count == analysisSize else { return 0 }
+
+        // 1. Hann window
+        var windowed = [Float](repeating: 0, count: analysisSize)
+        frame.withUnsafeBufferPointer { src in
+            vDSP_vmul(src.baseAddress!, 1, hssWindow, 1, &windowed, 1, vDSP_Length(analysisSize))
+        }
+
+        // 2. Pack into split complex and run forward FFT
+        for i in 0..<hssSpectrumSize {
+            hssReal[i] = windowed[2 * i]
+            hssImag[i] = windowed[2 * i + 1]
+        }
+
+        let log2n = vDSP_Length(log2(Float(analysisSize)))
+        hssReal.withUnsafeMutableBufferPointer { realPtr in
+            hssImag.withUnsafeMutableBufferPointer { imagPtr in
+                var splitComplex = DSPSplitComplex(
+                    realp: realPtr.baseAddress!,
+                    imagp: imagPtr.baseAddress!
+                )
+                vDSP_fft_zrip(setup, &splitComplex, 1, log2n, FFTDirection(kFFTDirection_Forward))
+
+                // 3. Magnitude spectrum
+                vDSP_zvabs(&splitComplex, 1, &hssMagnitude, 1, vDSP_Length(hssSpectrumSize))
+            }
+        }
+
+        // 4. Log magnitude: log(1 + mag[k]) — epsilon-safe, avoids log(0)
+        for k in 0..<hssSpectrumSize {
+            hssLogMag[k] = logf(1.0 + hssMagnitude[k])
+        }
+
+        // 5. Harmonic summation: for each candidate bin k, sum log magnitudes
+        //    at harmonic positions k, 2k, 3k, 4k.
+        //    Addition in log domain ≈ geometric mean. Missing harmonics contribute ~0
+        //    instead of zeroing a product — critical for piano through speakers.
+        for k in 0..<resultSize {
+            var sum: Float = 0
+            for h in 1...hssHarmonics {
+                sum += hssLogMag[k * h]
+            }
+            hssResult[k] = sum
+        }
+
+        // 6. Peak find within valid frequency range
+        let binResolution = sampleRate / Float(analysisSize)  // Hz per bin
+        let minBin = max(1, Int(minFrequency / binResolution))
+        let maxBin = min(resultSize - 2, Int(maxFrequency / binResolution))
+        guard minBin < maxBin else { return 0 }
+
+        var bestBin = minBin
+        var bestVal = hssResult[minBin]
+        for k in (minBin + 1)...maxBin {
+            if hssResult[k] > bestVal {
+                bestVal = hssResult[k]
+                bestBin = k
+            }
+        }
+
+        // Reject if peak is negligible (silence/noise)
+        guard bestVal > 0.1 else { return 0 }
+
+        // 7. Parabolic interpolation for sub-bin precision
+        var refinedBin = Float(bestBin)
+        if bestBin > minBin && bestBin < maxBin {
+            let alpha = hssResult[bestBin - 1]
+            let beta = hssResult[bestBin]
+            let gamma = hssResult[bestBin + 1]
+            let denom = alpha - 2 * beta + gamma
+            if abs(denom) > 1e-10 {
+                refinedBin += 0.5 * (alpha - gamma) / denom
+            }
+        }
+
+        return refinedBin * binResolution
+    }
+
+    // MARK: - Arbitration
+
+    /// Arbitrates between YIN (precise but octave-prone) and HSS (coarse but octave-correct).
+    private func arbitrate(yinFreq: Float, hssFreq: Float) -> Float {
+        // Both failed
+        if yinFreq == 0 && hssFreq == 0 { return 0 }
+
+        // One failed — use the other
+        if yinFreq == 0 { return hssFreq }
+        if hssFreq == 0 { return yinFreq }
+
+        // Both produced a result — check octave agreement
+        let ratio = yinFreq / hssFreq
+
+        // Agree (within ~1 semitone) → use YIN (more precise)
+        if ratio > 0.94 && ratio < 1.06 { return yinFreq }
+
+        // YIN is one octave too high → correct down using HSS's octave
+        if ratio > 1.88 && ratio < 2.12 { return yinFreq / 2.0 }
+
+        // YIN is one octave too low → correct up
+        if ratio > 0.47 && ratio < 0.53 { return yinFreq * 2.0 }
+
+        // Disagree by a non-octave amount — trust YIN (more precise)
+        return yinFreq
     }
 
     // MARK: - Result Processing

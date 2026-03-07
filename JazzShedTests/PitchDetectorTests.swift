@@ -62,6 +62,138 @@ struct PitchDetectorTests {
         #expect(detected == 0, "Expected 0 for silence, got \(detected)")
     }
 
+    /// Generate a piano-like wave with weak fundamental and strong overtones.
+    /// This simulates how piano sounds when played through speakers — bass
+    /// attenuated, 2nd harmonic louder than fundamental.
+    private func pianoLikeWave(fundamental: Float, sampleRate: Float = 44100, count: Int = 4096) -> [Float] {
+        (0..<count).map { i in
+            let t = Float(i) / sampleRate
+            return 0.3 * sinf(2 * .pi * fundamental * t)           // weak fundamental
+                 + 1.0 * sinf(2 * .pi * 2 * fundamental * t)       // strong 2nd harmonic
+                 + 0.6 * sinf(2 * .pi * 3 * fundamental * t)       // moderate 3rd
+                 + 0.3 * sinf(2 * .pi * 4 * fundamental * t)       // 4th harmonic
+        }
+    }
+
+    /// Generate a voice-like wave with strong fundamental and decaying harmonics.
+    private func voiceLikeWave(fundamental: Float, sampleRate: Float = 44100, count: Int = 4096) -> [Float] {
+        (0..<count).map { i in
+            let t = Float(i) / sampleRate
+            return 1.0 * sinf(2 * .pi * fundamental * t)           // strong fundamental
+                 + 0.5 * sinf(2 * .pi * 2 * fundamental * t)       // 2nd harmonic
+                 + 0.25 * sinf(2 * .pi * 3 * fundamental * t)      // 3rd harmonic
+                 + 0.12 * sinf(2 * .pi * 4 * fundamental * t)      // 4th harmonic
+        }
+    }
+
+    // MARK: - HSS octave correction on piano-like signals
+
+    @Test("Piano C4 (261.63 Hz) — HSS corrects octave to MIDI 60")
+    func yinPianoC4() {
+        let detector = PitchDetector()
+        detector.initializeBuffers()
+        let frame = pianoLikeWave(fundamental: 261.63)
+        let yinFreq = detector.yinEstimate(frame)
+        let hssFreq = detector.hssEstimate(frame)
+        // Use the full pipeline: YIN + HSS + arbitration via analyzeFrame's logic
+        let ratio = yinFreq > 0 && hssFreq > 0 ? yinFreq / hssFreq : 0
+        // HSS should point to the correct octave (~261 Hz, not ~523 Hz)
+        let finalFreq: Float
+        if yinFreq == 0 {
+            finalFreq = hssFreq
+        } else if hssFreq == 0 {
+            finalFreq = yinFreq
+        } else if ratio > 0.94 && ratio < 1.06 {
+            finalFreq = yinFreq
+        } else if ratio > 1.88 && ratio < 2.12 {
+            finalFreq = yinFreq / 2.0
+        } else if ratio > 0.47 && ratio < 0.53 {
+            finalFreq = yinFreq * 2.0
+        } else {
+            finalFreq = yinFreq
+        }
+        let midi = MIDIHelpers.frequencyToMIDI(finalFreq)
+        #expect(midi == 60, "Expected MIDI 60 (C4), got \(midi) from freq \(finalFreq) Hz (YIN=\(yinFreq), HSS=\(hssFreq))")
+    }
+
+    @Test("Piano A3 (220 Hz) — HSS corrects octave to MIDI 57")
+    func yinPianoA3() {
+        let detector = PitchDetector()
+        detector.initializeBuffers()
+        let frame = pianoLikeWave(fundamental: 220)
+        let yinFreq = detector.yinEstimate(frame)
+        let hssFreq = detector.hssEstimate(frame)
+        let ratio = yinFreq > 0 && hssFreq > 0 ? yinFreq / hssFreq : 0
+        let finalFreq: Float
+        if yinFreq == 0 {
+            finalFreq = hssFreq
+        } else if hssFreq == 0 {
+            finalFreq = yinFreq
+        } else if ratio > 0.94 && ratio < 1.06 {
+            finalFreq = yinFreq
+        } else if ratio > 1.88 && ratio < 2.12 {
+            finalFreq = yinFreq / 2.0
+        } else if ratio > 0.47 && ratio < 0.53 {
+            finalFreq = yinFreq * 2.0
+        } else {
+            finalFreq = yinFreq
+        }
+        let midi = MIDIHelpers.frequencyToMIDI(finalFreq)
+        #expect(midi == 57, "Expected MIDI 57 (A3), got \(midi) from freq \(finalFreq) Hz (YIN=\(yinFreq), HSS=\(hssFreq))")
+    }
+
+    @Test("Piano E4 (329.63 Hz) — HSS corrects octave to MIDI 64")
+    func yinPianoE4() {
+        let detector = PitchDetector()
+        detector.initializeBuffers()
+        let frame = pianoLikeWave(fundamental: 329.63)
+        let yinFreq = detector.yinEstimate(frame)
+        let hssFreq = detector.hssEstimate(frame)
+        let ratio = yinFreq > 0 && hssFreq > 0 ? yinFreq / hssFreq : 0
+        let finalFreq: Float
+        if yinFreq == 0 {
+            finalFreq = hssFreq
+        } else if hssFreq == 0 {
+            finalFreq = yinFreq
+        } else if ratio > 0.94 && ratio < 1.06 {
+            finalFreq = yinFreq
+        } else if ratio > 1.88 && ratio < 2.12 {
+            finalFreq = yinFreq / 2.0
+        } else if ratio > 0.47 && ratio < 0.53 {
+            finalFreq = yinFreq * 2.0
+        } else {
+            finalFreq = yinFreq
+        }
+        let midi = MIDIHelpers.frequencyToMIDI(finalFreq)
+        #expect(midi == 64, "Expected MIDI 64 (E4), got \(midi) from freq \(finalFreq) Hz (YIN=\(yinFreq), HSS=\(hssFreq))")
+    }
+
+    @Test("Voice A4 (440 Hz) — regression: still detects MIDI 69")
+    func yinVoiceLikeA4() {
+        let detector = PitchDetector()
+        detector.initializeBuffers()
+        let frame = voiceLikeWave(fundamental: 440)
+        let yinFreq = detector.yinEstimate(frame)
+        let hssFreq = detector.hssEstimate(frame)
+        let ratio = yinFreq > 0 && hssFreq > 0 ? yinFreq / hssFreq : 0
+        let finalFreq: Float
+        if yinFreq == 0 {
+            finalFreq = hssFreq
+        } else if hssFreq == 0 {
+            finalFreq = yinFreq
+        } else if ratio > 0.94 && ratio < 1.06 {
+            finalFreq = yinFreq
+        } else if ratio > 1.88 && ratio < 2.12 {
+            finalFreq = yinFreq / 2.0
+        } else if ratio > 0.47 && ratio < 0.53 {
+            finalFreq = yinFreq * 2.0
+        } else {
+            finalFreq = yinFreq
+        }
+        let midi = MIDIHelpers.frequencyToMIDI(finalFreq)
+        #expect(midi == 69, "Expected MIDI 69 (A4), got \(midi) from freq \(finalFreq) Hz (YIN=\(yinFreq), HSS=\(hssFreq))")
+    }
+
     // MARK: - Eighth notes at 130 BPM through full pipeline
 
     @Test("Segmenter detects eighth notes at 130 BPM")
